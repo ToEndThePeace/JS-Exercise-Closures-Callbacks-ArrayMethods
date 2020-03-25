@@ -133,10 +133,9 @@ function processProduct(num1, num2, callback) {
  * should return 3.
 */
 function processDuplicateFree(list, callback) {
-  let x = list.filter(function(item, index) {
+  return list.filter((item, index) => {
     return list.indexOf(item) === index;
   });
-  return x;
 }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -159,7 +158,7 @@ function processDuplicateFree(list, callback) {
  * [2] Invoking `lowerCaseStrings` with `['a', 'b', 'c' ]` will return `[ 'a', 'b', 'c' ]`.
 */
 function lowerCaseStrings(strings) {
-  return strings.map(function(x) {
+  return strings.map(x => {
     return x.toLowerCase();
   });
 }
@@ -180,7 +179,7 @@ function lowerCaseStrings(strings) {
  * [2] Invoking `isItAnApple` with `['a', 'b', 'c' ]` will return `[ false, false, false ]`.
 */
 function isItAnApple(strings) {
-  return strings.map(function(x) {
+  return strings.map(x => {
     return x === `apple`;
   })
 }
@@ -201,8 +200,14 @@ function isItAnApple(strings) {
  * 
  * [2] Invoking `removeApple` with `['a', 'b', 'c' ]` will return `[ 'a', 'b', 'c' ]`.
 */
+// function removeApple(strings) {
+//   return strings.filter(function(x) {
+//     return x != `apple`;
+//   })
+// }
+
 function removeApple(strings) {
-  return strings.filter(function(x) {
+  return strings.filter(x => {
     return x != `apple`;
   })
 }
@@ -223,7 +228,7 @@ function removeApple(strings) {
  * [2] Invoking `stringSmash` with `['a', 'b', 'c' ]` will return `abc`.
 */
 function stringSmash(strings) {
-  return strings.reduce(function(acc, x) {
+  return strings.reduce((acc, x) => {
     return acc + x;
   }, "")
 }
@@ -244,11 +249,9 @@ function stringSmash(strings) {
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
 function getFullNames(runners) {
-  let names = [];
-  runners.forEach(function(x) {
-    names.push(`${x.last_name}, ${x.first_name}`);
+  return runners.map(x => {
+    return `${x.last_name}, ${x.first_name}`;
   })
-  return names;
 }
 
 /**
@@ -264,11 +267,9 @@ function getFullNames(runners) {
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
 function firstNamesAllCaps(runners) {
-  let names = [];
-  runners.forEach(function(x) {
-    names.push(x.first_name.toUpperCase());
+  return runners.map(x => {
+    return x.first_name.toUpperCase();
   });
-  return names;
 }
 
 /**
@@ -286,7 +287,7 @@ function firstNamesAllCaps(runners) {
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
 function getRunnersByTShirtSize(runners, tShirtSize) {
-  return runners.filter(function(x) {
+  return runners.filter(x => {
     return x.shirt_size === tShirtSize;
   })
 }
@@ -303,7 +304,7 @@ function getRunnersByTShirtSize(runners, tShirtSize) {
  * @returns a number which is the sum of the donations by all runners.
 */
 function tallyUpDonations(runners) {
-  return runners.reduce(function(acc, x) {
+  return runners.reduce((acc, x) => {
     return acc + x.donation;
   }, 0)
 }
@@ -365,7 +366,7 @@ function counter2() {
 */
 function counterMakerWithLimit(maxVal) {
   let count = 0;
-  return function () {
+  return () => {
     if (count === 0) {
       count++;
       return 0;
